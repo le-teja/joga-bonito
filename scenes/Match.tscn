@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/MatchController.cs" id="1_match"]
+[ext_resource type="Script" path="res://scripts/world/Pitch.cs" id="2_pitch"]
+[ext_resource type="PackedScene" path="res://scenes/Ball.tscn" id="3_ball"]
+[ext_resource type="Script" path="res://scripts/presentation/MatchCamera.cs" id="4_cam"]
+[ext_resource type="Script" path="res://scripts/presentation/Hud.cs" id="5_hud"]
+
+[node name="Match" type="Node3D"]
+script = ExtResource("1_match")
+
+[node name="Pitch" type="Node3D" parent="."]
+script = ExtResource("2_pitch")
+
+[node name="Ball" parent="." instance=ExtResource("3_ball")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11, 0)
+
+[node name="GameCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 25)
+script = ExtResource("4_cam")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("5_hud")

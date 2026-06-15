@@ -1,0 +1,50 @@
+{
+  "GK": {
+    "top_speed": [45, 60],
+    "acceleration": [45, 60],
+    "agility": [60, 80],
+    "balance": [55, 75],
+    "strength": [55, 75],
+    "ball_control": [35, 55],
+    "passing": [45, 65],
+    "shooting": [20, 35],
+    "defensive_reach": [70, 90],
+    "stamina": [60, 80]
+  },
+  "DEF": {
+    "top_speed": [55, 72],
+    "acceleration": [50, 68],
+    "agility": [45, 65],
+    "balance": [60, 80],
+    "strength": [65, 85],
+    "ball_control": [45, 62],
+    "passing": [50, 68],
+    "shooting": [30, 50],
+    "defensive_reach": [65, 88],
+    "stamina": [62, 82]
+  },
+  "MID": {
+    "top_speed": [58, 75],
+    "acceleration": [58, 76],
+    "agility": [60, 80],
+    "balance": [55, 75],
+    "strength": [50, 70],
+    "ball_control": [62, 84],
+    "passing": [65, 88],
+    "shooting": [50, 70],
+    "defensive_reach": [45, 65],
+    "stamina": [70, 90]
+  },
+  "FWD": {
+    "top_speed": [68, 90],
+    "acceleration": [68, 88],
+    "agility": [65, 85],
+    "balance": [55, 75],
+    "strength": [50, 72],
+    "ball_control": [65, 86],
+    "passing": [55, 72],
+    "shooting": [68, 90],
+    "defensive_reach": [30, 50],
+    "stamina": [62, 82]
+  }
+}

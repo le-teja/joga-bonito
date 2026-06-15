@@ -1,0 +1,17 @@
+# Godot
+.godot/
+*.import
+build/
+
+# .NET
+.mono/
+bin/
+obj/
+*.user
+
+# OS / editor
+.DS_Store
+.vs/
+.vscode/
+.idea/
+"Godot_v4.6.3-stable_mono_win64/" 

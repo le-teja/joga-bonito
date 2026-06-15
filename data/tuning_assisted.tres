@@ -1,0 +1,57 @@
+[gd_resource type="Resource" script_class="GameplayTuning" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/core/GameplayTuning.cs" id="1_tun"]
+
+[resource]
+script = ExtResource("1_tun")
+Accel = 9.0
+Decel = 13.0
+TurnDegLowSpeed = 760.0
+TurnDegHighSpeed = 210.0
+ShieldSpeed = 1.6
+JockeySpeed = 3.4
+StaminaDrainSprint = 6.5
+StaminaRecover = 4.5
+FatigueMinFactor = 0.82
+BallRollFriction = 4.6
+BallAirDrag = 0.12
+MagnusFactor = 0.05
+ControlRadius = 1.7
+DribbleTouchDist = 1.05
+DribbleTouchInterval = 0.55
+DribbleSpeedFactor = 1.12
+FirstTouchSpeedThreshold = 7.0
+TouchErrorBase = 0.18
+ReceiveLockBase = 0.14
+KickRange = 1.55
+PassSpeedMin = 9.0
+PassSpeedMax = 21.0
+LobSpeedMin = 11.0
+LobSpeedMax = 24.0
+ThroughSpeedBonus = 1.18
+ShotSpeedMin = 16.0
+ShotSpeedMax = 31.0
+FinessePowerScale = 0.8
+FinesseSideSpin = 7.5
+PassErrorDeg = 4.0
+ShotErrorDeg = 3.5
+AimAssist = 0.8
+PassWindup = 0.12
+PassRecover = 0.18
+ShotWindupMin = 0.16
+ShotWindupMax = 0.3
+ShotRecover = 0.34
+PassChargeTime = 0.7
+ShotChargeTime = 1.1
+TackleWindup = 0.1
+TackleActive = 0.22
+TackleRecover = 0.45
+SlideActive = 0.55
+SlideRecover = 0.95
+SlideSpeed = 8.5
+TackleBaseChance = 0.72
+StumbleSpeedThreshold = 5.5
+StumbleDuration = 0.55
+AiPressTackleDist = 1.9
+AiShootRange = 23.0
+AiPassPressureDist = 2.8

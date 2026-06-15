@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/players/Player.cs" id="1_player"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p"]
+radius = 0.32
+height = 1.8
+
+[sub_resource type="TorusMesh" id="TorusMesh_ring"]
+inner_radius = 0.45
+outer_radius = 0.62
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ring"]
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 0.9)
+
+[node name="Player" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_player")
+
+[node name="Shape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_p")
+
+[node name="Visual" type="Node3D" parent="."]
+
+[node name="SelectRing" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.06, 0)
+visible = false
+mesh = SubResource("TorusMesh_ring")
+surface_material_override/0 = SubResource("StandardMaterial3D_ring")
