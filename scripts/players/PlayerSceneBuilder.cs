@@ -302,22 +302,69 @@ public static class PlayerSceneBuilder
     }
 
     // =====================================================================
-    // FALLBACK (if player.fbx missing)
+    // FALLBACK (if player.fbx missing) — procedural humanoid from primitives
     // =====================================================================
     private static void BuildFallbackCapsule(Player player)
     {
         var visual = new Node3D { Name = "Visual" };
         player.AddChild(visual);
-        Color c = player.Team == 0
-            ? new Color(0.1f, 0.25f, 0.9f)
-            : new Color(0.9f, 0.1f, 0.1f);
+
+        var skin = new Color(0.87f, 0.71f, 0.56f);
+        var dark = new Color(0.13f, 0.09f, 0.07f);
+        var sockWhite = new Color(0.92f, 0.92f, 0.92f);
+
+        Color shirtColor, shortsColor;
+        if (player.Role == PRole.GK)
+        {
+            shirtColor  = player.Team == 0 ? new Color(0.95f, 0.82f, 0.10f) : new Color(0.10f, 0.80f, 0.35f);
+            shortsColor = new Color(0.10f, 0.10f, 0.10f);
+        }
+        else
+        {
+            shirtColor  = player.Team == 0 ? new Color(0.08f, 0.22f, 0.88f) : new Color(0.88f, 0.10f, 0.10f);
+            shortsColor = player.Team == 0 ? new Color(0.05f, 0.12f, 0.55f) : new Color(0.55f, 0.06f, 0.06f);
+        }
+
+        // Head
+        AddPart(visual, new SphereMesh { Radius = 0.13f, Height = 0.26f },
+                new Vector3(0f, 1.68f, 0f), skin);
+
+        // Torso / shirt
+        AddPart(visual, new CapsuleMesh { Radius = 0.175f, Height = 0.45f },
+                new Vector3(0f, 1.19f, 0f), shirtColor);
+
+        // Shorts
+        AddPart(visual, new CylinderMesh { TopRadius = 0.155f, BottomRadius = 0.175f, Height = 0.24f },
+                new Vector3(0f, 0.85f, 0f), shortsColor);
+
+        // Arms (bare skin — short sleeves)
+        AddPart(visual, new CapsuleMesh { Radius = 0.063f, Height = 0.42f },
+                new Vector3(-0.245f, 1.13f, 0f), skin);
+        AddPart(visual, new CapsuleMesh { Radius = 0.063f, Height = 0.42f },
+                new Vector3( 0.245f, 1.13f, 0f), skin);
+
+        // Legs (white socks)
+        AddPart(visual, new CapsuleMesh { Radius = 0.087f, Height = 0.52f },
+                new Vector3(-0.105f, 0.46f, 0f), sockWhite);
+        AddPart(visual, new CapsuleMesh { Radius = 0.087f, Height = 0.52f },
+                new Vector3( 0.105f, 0.46f, 0f), sockWhite);
+
+        // Boots
+        AddPart(visual, new BoxMesh { Size = new Vector3(0.13f, 0.09f, 0.22f) },
+                new Vector3(-0.105f, 0.11f, 0.03f), dark);
+        AddPart(visual, new BoxMesh { Size = new Vector3(0.13f, 0.09f, 0.22f) },
+                new Vector3( 0.105f, 0.11f, 0.03f), dark);
+    }
+
+    private static void AddPart(Node3D parent, Mesh mesh, Vector3 pos, Color color)
+    {
         var mi = new MeshInstance3D
         {
-            Mesh = new CapsuleMesh { Radius = 0.32f, Height = 1.8f },
-            MaterialOverride = new StandardMaterial3D { AlbedoColor = c }
+            Mesh = mesh,
+            MaterialOverride = new StandardMaterial3D { AlbedoColor = color, Roughness = 0.82f }
         };
-        mi.Position = new Vector3(0, 0.9f, 0);
-        visual.AddChild(mi);
+        mi.Position = pos;
+        parent.AddChild(mi);
     }
 
     // =====================================================================

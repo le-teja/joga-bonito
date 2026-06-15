@@ -80,15 +80,13 @@ public partial class Player : CharacterBody3D
         _rng.Seed = seed;
         Attr = PlayerAttributes.ForRole(role, _rng);
         Facing = team == 0 ? new Vector3(1, 0, 0) : new Vector3(-1, 0, 0);
+        PlayerSceneBuilder.BuildVisuals(this);
+        _nose = GetNodeOrNull<Node3D>("Visual");
     }
 
     public override void _Ready()
     {
         _selectRing = GetNodeOrNull<MeshInstance3D>("SelectRing");
-        _nose = null; // facing handled by PlayerAnimator via Visual node
-        PlayerSceneBuilder.BuildVisuals(this);
-        // Visual node was just added — get reference for facing rotation
-        _nose = GetNodeOrNull<Node3D>("Visual");
     }
 
     public void SetSelected(bool sel)
